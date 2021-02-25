@@ -155,7 +155,7 @@
 
 @media (min-width:767px) {
     .header .city {
-        grid-template-columns: repeat(2, fit-content(100%));
+        grid-template-columns: repeat(2, 50fr);
     }
 }
 
@@ -193,7 +193,7 @@
 
 @media (min-width:767px) {
     .fav-header {
-        grid-template-columns: repeat(2, fit-content(100%));
+        grid-template-columns: repeat(2, 50fr);
     }
 }
 
@@ -234,7 +234,7 @@
 
 @media (min-width:767px) {
     .fav-list {
-        grid-template-columns: repeat(2, fit-content(100%));
+        grid-template-columns: repeat(2, 50fr);
     }
 }
 
