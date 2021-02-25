@@ -3,13 +3,14 @@
 .body {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
-    padding: 12px 24px;
+    padding: 5vw 5vw;
 }
 
 .section-title {
     color: #4d6d6b;
-    font-size: 30px;
+    font-size: 5vw;
 }
 
 .city {
@@ -19,13 +20,13 @@
 .city-info {
     display: grid;
     grid-template-columns: repeat(3, fit-content(100%));
-    grid-column-gap: 5px;
+    grid-column-gap: 1vw;
 }
 
 .city-info-name {
     align-self: center;
     color: #6f8088;
-    font-size: 18px;
+    font-size: 4vw;
     font-weight: bold;
 }
 
@@ -33,16 +34,14 @@
     align-self: center;
     justify-self: end;
     color: #7e7e7e;
-    font-size: 25px;
-    padding-left: 20px;
+    font-size: 4vw;
 }
 
 .city-info-icon {
     display: flex;
     justify-self: start;
     align-self: center;
-    width: 30px;
-    padding-right: 15px;
+    width: 3vw;
 }
 
 .city-info-icon img {
@@ -53,16 +52,16 @@
 .weather-info {
     display: grid;
     grid-template-rows: auto;
-    grid-row-gap: 5px;
+    grid-row-gap: 1vw;
     color: white;
-    font-size: 11px;
+    font-size: 2vw;
 }
 
 .weather-info-item {
     display: flex;
     justify-content: space-between;
     background-color: #a7afb0;
-    padding: 5px;
+    padding: 1vw;
 }
 
 .weather-info-feature {
@@ -86,10 +85,10 @@
     width: fit-content;
     height: fit-content;
     border: none;
-    border-radius: 5px;
+    border-radius: 1vw;
     outline: none;
     background-color: #a7a7a7;
-    padding: 3px 5px;
+    padding: 1vw 2vw;
 }
 
 .update-button span {
@@ -113,9 +112,9 @@
 }
 
 .round-button {
-    height: 20px;
-    width: 20px;
-    font: 15px;
+    height: 4vw;
+    width: 4vw;
+    font-size: 2vw;
     border: none;
     border-radius: 50%;
     background-color: #4f5f66;
@@ -131,10 +130,10 @@
 .header {
     width: 100%;
     display: grid;
-    grid-row-gap: 20px;
+    grid-row-gap: 2vw;
     grid-template-columns: fit-content(100%) 1fr;
-    grid-row-gap: 15px;
-    grid-column-gap: 40px;
+    grid-row-gap: 1.5vw;
+    grid-column-gap: 4vw;
     grid-template-areas: "section-title update-button" "city city";
 }
 
@@ -144,29 +143,36 @@
 }
 
 .header .city {
+    display: grid;
     grid-area: city;
-    grid-row-gap: 15px;
+    grid-row-gap: 1.5vw;
 }
 
 .header .city .city-info {
-    grid-row-gap: 10px;
+    grid-row-gap: 1vw;
     grid-template-areas: "city-name city-name" "weather-icon weather-temperature";
+}
+
+@media (min-width:767px) {
+    .header .city {
+        grid-template-columns: repeat(2, fit-content(100%));
+    }
 }
 
 .header .city .city-info-name {
     grid-area: city-name;
-    font-size: 22px;
+    font-size: 4vw;
 }
 
 .header .city .city-info-temperature {
     grid-area: weather-temperature;
     align-self: center;
-    font-size: 70px;
+    font-size: 12vw;
 }
 
 .header .city .city-info-icon {
     grid-area: weather-icon;
-    width: 100px;
+    width: 10vw;
 }
 
 
@@ -176,52 +182,64 @@
     width: 100%;
     padding-top: 3vh;
     display: grid;
-    grid-row-gap: 20px;
+    grid-row-gap: 2vw;
 }
 
-.favorites-header {
+.fav-header {
     display: grid;
-    grid-row-gap: 25px;
+    grid-row-gap: 2vw;
+    grid-column-gap: 2vw;
 }
 
-.add-form {
+@media (min-width:767px) {
+    .fav-header {
+        grid-template-columns: repeat(2, fit-content(100%));
+    }
+}
+
+.form {
     display: grid;
     grid-template-columns: 1fr auto;
-    grid-column-gap: 10px;
+    grid-column-gap: 1vw;
 }
 
-.add-form .round-button {
+.form .round-button {
     align-self: center;
 }
 
-.add-form-input {
-    font-size: 10px;
+.form-input {
+    font-size: 2vw;
     border: none;
     color: #6a8387;
     background-color: #f1f1f1;
-    padding: 10px;
+    padding: 1vw;
 }
 
-.add-form-input:focus {
+.form-input:focus {
     outline: none;
 }
 
-.add-form-input::placeholder {
+.form-input::placeholder {
     color: #6a8387;
 }
 
-.add-form-input:focus::placeholder {
+.form-input:focus::placeholder {
     visibility: hidden;
 }
 
-.favorites-items {
+.fav-list {
     display: grid;
-    grid-gap: 25px;
+    grid-gap: 2.5vw;
+}
+
+@media (min-width:767px) {
+    .fav-list {
+        grid-template-columns: repeat(2, fit-content(100%));
+    }
 }
 
 .fav-city {
-    grid-row-gap: 5px;
-    grid-template-columns: 2.5fr 1fr;
+    grid-row-gap: 2vw;
     grid-template-areas: "city-info remove-button" "weather-info weather-info";
 }
 
