@@ -17,12 +17,12 @@
                 <span class="update-name">Обновить геолокацию</span>
                 <img src="assets/update.svg" alt="">
             </button>
-        <div class="city">
+        <div class="city main-city loader-on">
             <div class="city-info">
                 <h3 class="city-info-name">Saint Petersburg</h3>
                 <span class="city-info-temperature">8°C</span>
                 <div class="city-info-icon">
-                    <img src="assets/broken-clouds.svg" alt="">
+                    <img src="assets/broken-clouds.svg" class="weather-icon" alt="">
                 </div>
             </div>
             <ul class="weather-info">
@@ -47,6 +47,10 @@
                     <span class="weather-info-value">[59.88, 30.42]</span>
                 </li>
             </ul>
+            <div class="city-loader">
+                <span>Подождите, данные загружаются</span>
+                <div class="loader-icon"></div>
+            </div>
         </div>
     </header>
 
@@ -54,218 +58,15 @@
     <main class="main">
         <div class="fav-header">
             <h2 class="section-title">Избранное</h2>
-            <form action="" class="form">
-                <input placeholder="Добавить новый город" class="form-input">
-                <button class="round-button">+</button>
+            <form name="form" class="form">
+                <input type="text" id="favorite-city-name" placeholder="Добавить новый город" class="form-input">
+                <button class="round-button add-city-button">+</button>
             </form>
         </div>
-        <ul class="fav-list">
-            <li class="fav">
-                <div class="city fav-city">
-                    <div class="city-info">
-                        <h3 class="city-info-name">Moscow</h3>
-                        <span class="city-info-temperature">5°C</span>
-                        <div class="city-info-icon">
-                            <img src="assets/broken-clouds.svg" alt="">
-                        </div>
-                    </div>
-                    <button class="round-button">&#xd7;</button>
-                    <ul class="weather-info">
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Ветер</span>
-                            <span class="weather-info-value">Moderate breeze, 6.0 m/s, North-northwest</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Облачность</span>
-                            <span class="weather-info-value">Broken clouds</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Давление</span>
-                            <span class="weather-info-value">1013 hpa</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Влажность</span>
-                            <span class="weather-info-value">52%</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Координаты</span>
-                            <span class="weather-info-value">[59.88, 30.42]</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <li class="fav">
-                <div class="city fav-city">
-                    <div class="city-info">
-                        <h3 class="city-info-name">Helsinki</h3>
-                        <span class="city-info-temperature">3°C</span>
-                        <div class="city-info-icon">
-                            <img src="assets/broken-clouds.svg" alt="">
-                        </div>
-                    </div>
-                    <button class="round-button no-select">&#xd7;</button>
-                    <ul class="weather-info">
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Ветер</span>
-                            <span class="weather-info-value">Moderate breeze, 6.0 m/s, North-northwest</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Облачность</span>
-                            <span class="weather-info-value">Broken clouds</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Давление</span>
-                            <span class="weather-info-value">1013 hpa</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Влажность</span>
-                            <span class="weather-info-value">52%</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Координаты</span>
-                            <span class="weather-info-value">[59.88, 30.42]</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <li class="fav">
-                <div class="city fav-city">
-                    <div class="city-info">
-                        <h3 class="city-info-name">Moscow</h3>
-                        <span class="city-info-temperature">5°C</span>
-                        <div class="city-info-icon">
-                            <img src="assets/broken-clouds.svg" alt="">
-                        </div>
-                    </div>
-                    <button class="round-button">&#xd7;</button>
-                    <ul class="weather-info">
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Ветер</span>
-                            <span class="weather-info-value">Moderate breeze, 6.0 m/s, North-northwest</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Облачность</span>
-                            <span class="weather-info-value">Broken clouds</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Давление</span>
-                            <span class="weather-info-value">1013 hpa</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Влажность</span>
-                            <span class="weather-info-value">52%</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Координаты</span>
-                            <span class="weather-info-value">[59.88, 30.42]</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <li class="fav">
-                <div class="city fav-city">
-                    <div class="city-info">
-                        <h3 class="city-info-name">Helsinki</h3>
-                        <span class="city-info-temperature">3°C</span>
-                        <div class="city-info-icon">
-                            <img src="assets/broken-clouds.svg" alt="">
-                        </div>
-                    </div>
-                    <button class="round-button no-select">&#xd7;</button>
-                    <ul class="weather-info">
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Ветер</span>
-                            <span class="weather-info-value">Moderate breeze, 6.0 m/s, North-northwest</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Облачность</span>
-                            <span class="weather-info-value">Broken clouds</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Давление</span>
-                            <span class="weather-info-value">1013 hpa</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Влажность</span>
-                            <span class="weather-info-value">52%</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Координаты</span>
-                            <span class="weather-info-value">[59.88, 30.42]</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <li class="fav">
-                <div class="city fav-city">
-                    <div class="city-info">
-                        <h3 class="city-info-name">Moscow</h3>
-                        <span class="city-info-temperature">5°C</span>
-                        <div class="city-info-icon">
-                            <img src="assets/broken-clouds.svg" alt="">
-                        </div>
-                    </div>
-                    <button class="round-button">&#xd7;</button>
-                    <ul class="weather-info">
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Ветер</span>
-                            <span class="weather-info-value">Moderate breeze, 6.0 m/s, North-northwest</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Облачность</span>
-                            <span class="weather-info-value">Broken clouds</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Давление</span>
-                            <span class="weather-info-value">1013 hpa</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Влажность</span>
-                            <span class="weather-info-value">52%</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Координаты</span>
-                            <span class="weather-info-value">[59.88, 30.42]</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <li class="fav">
-                <div class="city fav-city">
-                    <div class="city-info">
-                        <h3 class="city-info-name">Helsinki</h3>
-                        <span class="city-info-temperature">3°C</span>
-                        <div class="city-info-icon">
-                            <img src="assets/broken-clouds.svg" alt="">
-                        </div>
-                    </div>
-                    <button class="round-button no-select">&#xd7;</button>
-                    <ul class="weather-info">
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Ветер</span>
-                            <span class="weather-info-value">Moderate breeze, 6.0 m/s, North-northwest</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Облачность</span>
-                            <span class="weather-info-value">Broken clouds</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Давление</span>
-                            <span class="weather-info-value">1013 hpa</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Влажность</span>
-                            <span class="weather-info-value">52%</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Координаты</span>
-                            <span class="weather-info-value">[59.88, 30.42]</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
+        <ul class="fav-list"></ul>
     </main>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/events.js"></script>
 </body>
 
 </html>

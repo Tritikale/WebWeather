@@ -77,6 +77,15 @@
 
 /* ======================BUTTONS===================== */
 
+button {
+    user-select: none;
+    outline: none;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
 .update-button {
     display: flex;
     justify-content: center;
@@ -255,4 +264,48 @@
 
 .fav-city .weather-info {
     grid-area: weather-info;
+}
+
+
+/* ======================LOADER===================== */
+
+.header .loader-on,
+.fav-list .loader-on {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column-gap: unset;
+    grid-row-gap: unset;
+    grid-template-columns: none;
+}
+
+.loader-on .city-info,
+.loader-on .weather-info {
+    display: none;
+}
+
+.loader-on .city-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 10vh;
+    margin-bottom: 1vh;
+    min-width: 280px;
+    width: 100%;
+}
+
+.city-loader {
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.city-loader .loader-icon {
+    background-image: url("../assets/loader.svg");
+    color: black;
+    background-repeat: no-repeat;
+    height: 3vw;
+    width: 3vw;
+    margin: 2vw;
 }
