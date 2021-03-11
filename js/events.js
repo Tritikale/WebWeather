@@ -43,8 +43,8 @@ function loadCoordinatesFromGeolocationAPI() {
         });
     }, function(e) {
         updateCurrentCityInformation({
-            'latitude': 59.938480,
-            'longitude': 30.312481
+            'latitude': 59.8944,
+            'longitude': 30.2642
         });
         console.warn(`No access to geolocation: ` + e.message)
     });
@@ -100,7 +100,8 @@ async function loadCitiesFromLocalStorage() {
 }
 
 async function addFavoriteCityToUI(cityName) {
-    const cityId = myStorage.length + 1;
+    var cityId = cityName;
+
     favoriteCitiesList.innerHTML += `
                             <li class="loader-on" id="favorite_${cityId}">
                                 <div class="city-loader">

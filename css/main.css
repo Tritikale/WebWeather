@@ -28,6 +28,10 @@
     color: #6f8088;
     font-size: 4vw;
     font-weight: bold;
+    padding: 1vh;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .city-info-temperature {
