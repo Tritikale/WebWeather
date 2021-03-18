@@ -26,23 +26,23 @@
                 </div>
             </div>
             <ul class="weather-info">
-                <li class="weather-info-item">
+                <li class="weather-info-item wind">
                     <span class="weather-info-feature">Ветер</span>
                     <span class="weather-info-value">Moderate breeze, 6.0 m/s, North-northwest</span>
                 </li>
-                <li class="weather-info-item">
+                <li class="weather-info-item cloudiness">
                     <span class="weather-info-feature">Облачность</span>
                     <span class="weather-info-value">Broken clouds</span>
                 </li>
-                <li class="weather-info-item">
+                <li class="weather-info-item pressure">
                     <span class="weather-info-feature">Давление</span>
                     <span class="weather-info-value">1013 hpa</span>
                 </li>
-                <li class="weather-info-item">
+                <li class="weather-info-item humidity">
                     <span class="weather-info-feature">Влажность</span>
                     <span class="weather-info-value">52%</span>
                 </li>
-                <li class="weather-info-item">
+                <li class="weather-info-item coordinates">
                     <span class="weather-info-feature">Координаты</span>
                     <span class="weather-info-value">[59.88, 30.42]</span>
                 </li>
@@ -63,7 +63,48 @@
                 <button class="round-button add-city-button">+</button>
             </form>
         </div>
-        <ul class="fav-list"></ul>
+        <ul class="fav-list">
+            <template id="fav-city-template">
+                <li class="loader-on" id="favorite_Moscow">
+                    <div class="city-loader">
+                        <span>Подождите, данные загружаются</span>
+                        <div class="loader-icon"></div>
+                    </div>
+                    <div class="city fav-city">
+                        <div class="city-info">
+                            <h3 class="city-info-name">Moscow</h3>
+                            <span class="city-info-temperature">8°C</span>
+                            <div class="city-info-icon">
+                                <img src="assets/broken-clouds.svg" class="weather-icon" alt="">
+                            </div>
+                        </div>
+                        <button class="round-button remove-button">&#xd7;</button>
+                        <ul class="weather-info">
+                            <li class="weather-info-item wind">
+                                <span class="weather-info-feature">Ветер</span>
+                                <span class="weather-info-value">Moderate breeze, 6.0 m/s, North-northwest</span>
+                            </li>
+                            <li class="weather-info-item cloudiness">
+                                <span class="weather-info-feature">Облачность</span>
+                                <span class="weather-info-value">Broken clouds</span>
+                            </li>
+                            <li class="weather-info-item pressure">
+                                <span class="weather-info-feature">Давление</span>
+                                <span class="weather-info-value">1013 hpa</span>
+                            </li>
+                            <li class="weather-info-item humidity">
+                                <span class="weather-info-feature">Влажность</span>
+                                <span class="weather-info-value">52%</span>
+                            </li>
+                            <li class="weather-info-item coordinates">
+                                <span class="weather-info-feature">Координаты</span>
+                                <span class="weather-info-value">[59.88, 30.42]</span>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </template>
+        </ul>
     </main>
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/events.js"></script>

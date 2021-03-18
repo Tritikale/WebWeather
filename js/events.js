@@ -24,7 +24,6 @@ favoriteCitiesList.addEventListener('click', function(event) {
 });
 
 updateButton.addEventListener('click', function() {
-    myStorage.clear();
     setLoaderOnCurrentCity();
     loadCoordinatesFromGeolocationAPI();
 });
@@ -52,38 +51,18 @@ function loadCoordinatesFromGeolocationAPI() {
 
 async function updateCurrentCityInformation(coordinates) {
     let weatherData = await getWeatherByCoordinates(coordinates['latitude'], coordinates['longitude'])
-    currentCity.removeChild(currentCity.getElementsByClassName('city-info')[0]);
-    currentCity.removeChild(currentCity.getElementsByClassName('weather-info')[0]);
-    currentCity.innerHTML += `
-                        <div class="city-info">
-                            <h3 class="city-info-name">${weatherData['name']}</h3>
-                            <span class="city-info-temperature">${Math.round(weatherData['main']['temp_min'])}°C</span>
-                            <div class="city-info-icon">
-                                <img src="${getWeatherIcon(weatherData['weather'][0]['icon'])}" class="weather-icon" alt="">
-                            </div>
-                        </div>
-                        <ul class="weather-info">
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Ветер</span>
-                            <span class="weather-info-value">${weatherData['wind']['speed']} m/s, ${weatherData['wind']['deg']}</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Облачность</span>
-                            <span class="weather-info-value">${weatherData['weather'][0]['main']}</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Давление</span>
-                            <span class="weather-info-value">${weatherData['main']['pressure']} hpa</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Влажность</span>
-                            <span class="weather-info-value">${weatherData['main']['humidity']}%</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Координаты</span>
-                            <span class="weather-info-value">[${weatherData['coord']['lat']}, ${weatherData['coord']['lon']}]</span>
-                        </li>
-                        </ul>`;
+
+    currentCity.getElementsByClassName('city-info-name')[0].textContent = weatherData['name'];
+    currentCity.getElementsByClassName('weather-icon')[0].src = getWeatherIcon(weatherData);
+    currentCity.getElementsByClassName('city-info-temperature')[0].innerHTML = `${Math.round(weatherData['main']['temp_min'])}°C`;
+
+    const infoWeatherElement = currentCity.getElementsByClassName('weather-info')[0];
+    infoWeatherElement.getElementsByClassName('wind')[0].getElementsByClassName('weather-info-value')[0].textContent = `${weatherData['wind']['speed']} m/s, ${weatherData['wind']['deg']} deg`;
+    infoWeatherElement.getElementsByClassName('cloudiness')[0].getElementsByClassName('weather-info-value')[0].textContent = weatherData['weather'][0]['main'];
+    infoWeatherElement.getElementsByClassName('pressure')[0].getElementsByClassName('weather-info-value')[0].textContent = `${weatherData['main']['pressure']} hpa`;
+    infoWeatherElement.getElementsByClassName('humidity')[0].getElementsByClassName('weather-info-value')[0].textContent = `${weatherData['main']['humidity']}%`;
+    infoWeatherElement.getElementsByClassName('coordinates')[0].getElementsByClassName('weather-info-value')[0].textContent = `[${weatherData['coord']['lat']}, ${weatherData['coord']['lon']}]`;
+
     unsetLoaderOnCurrentCity();
 }
 
@@ -102,14 +81,11 @@ async function loadCitiesFromLocalStorage() {
 async function addFavoriteCityToUI(cityName) {
     var cityId = cityName;
 
-    favoriteCitiesList.innerHTML += `
-                            <li class="loader-on" id="favorite_${cityId}">
-                                <div class="city-loader">
-                                    <span>Подождите, данные загружаются</span>
-                                    <div class="loader-icon"></div>
-                                </div>
-                            </li>
-                        `;
+    const template = document.getElementById('fav-city-template');
+    const favoriteCityElement = document.importNode(template.content.firstElementChild, true);
+    favoriteCityElement.id = `favorite_${cityId}`;
+
+    favoriteCitiesList.appendChild(favoriteCityElement);
 
     let weatherData = await getWeatherByCityName(cityName);
 
@@ -126,40 +102,19 @@ async function addFavoriteCityToUI(cityName) {
     }
 
     myStorage.setItem(weatherData['name'], cityId);
-    const cityObject = document.getElementById(`favorite_${cityId}`);
-    cityObject.innerHTML += `
-                    <div class="city fav-city">
-                        <div class="city-info">
-                            <h3 class="city-info-name">${weatherData['name']}</h3>
-                            <span class="city-info-temperature">${Math.round(weatherData['main']['temp_min'])}°C</span>
-                            <div class="city-info-icon">
-                                <img src="${getWeatherIcon(weatherData['weather'][0]['icon'])}" class="weather-icon" alt="">
-                            </div>
-                        </div>
-                        <button class="round-button remove-button">&#xd7;</button>
-                        <ul class="weather-info">
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Ветер</span>
-                            <span class="weather-info-value">${weatherData['wind']['speed']} m/s, ${weatherData['wind']['deg']}</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Облачность</span>
-                            <span class="weather-info-value">${weatherData['weather'][0]['main']}</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Давление</span>
-                            <span class="weather-info-value">${weatherData['main']['pressure']} hpa</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Влажность</span>
-                            <span class="weather-info-value">${weatherData['main']['humidity']}%</span>
-                        </li>
-                        <li class="weather-info-item">
-                            <span class="weather-info-feature">Координаты</span>
-                            <span class="weather-info-value">[${weatherData['coord']['lat']}, ${weatherData['coord']['lon']}]</span>
-                        </li>
-                        </ul>
-                    </div>`;
+
+    const favCityInfoElement = favoriteCityElement.getElementsByClassName('city-info')[0];
+    favCityInfoElement.getElementsByClassName('city-info-name')[0].textContent = weatherData['name'];
+    favCityInfoElement.getElementsByClassName('city-info-temperature')[0].innerHTML = `${Math.round(weatherData['main']['temp_min'])}°C`;
+    favCityInfoElement.getElementsByClassName('weather-icon')[0].src = getWeatherIcon(weatherData);
+
+    const infoWeatherElement = favoriteCityElement.getElementsByClassName('weather-info')[0];
+    infoWeatherElement.getElementsByClassName('wind')[0].getElementsByClassName('weather-info-value')[0].textContent = `${weatherData['wind']['speed']} m/s, ${weatherData['wind']['deg']} deg`;
+    infoWeatherElement.getElementsByClassName('cloudiness')[0].getElementsByClassName('weather-info-value')[0].textContent = weatherData['weather'][0]['main'];
+    infoWeatherElement.getElementsByClassName('pressure')[0].getElementsByClassName('weather-info-value')[0].textContent = `${weatherData['main']['pressure']} hpa`;
+    infoWeatherElement.getElementsByClassName('humidity')[0].getElementsByClassName('weather-info-value')[0].textContent = `${weatherData['main']['humidity']}%`;
+    infoWeatherElement.getElementsByClassName('coordinates')[0].getElementsByClassName('weather-info-value')[0].textContent = `[${weatherData['coord']['lat']}, ${weatherData['coord']['lon']}]`;
+
     unsetLoaderOnFavoriteCity(cityId);
 }
 
