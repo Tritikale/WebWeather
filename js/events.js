@@ -89,6 +89,12 @@ async function addFavoriteCityToUI(cityName) {
 
     let weatherData = await getWeatherByCityName(cityName);
 
+    if (weatherData == undefined) {
+        alert('No internet connection.');
+        deleteFavoriteCityById(cityId);
+        return null;
+    }
+
     if (weatherData['cod'] !== 200) {
         alert('City name is incorrect or information is missing.');
         deleteFavoriteCityById(cityId);
