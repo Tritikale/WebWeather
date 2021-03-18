@@ -7,7 +7,7 @@ const myStorage = window.localStorage;
 
 cityForm.addEventListener('submit', function(e) {
     const cityInput = document.getElementById('favorite-city-name');
-    addFavoriteCityToUI(cityInput.value);
+    addFavoriteCityToUI(cityInput.value.trim());
     cityInput.value = '';
     e.preventDefault();
 });
